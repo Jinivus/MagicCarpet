@@ -68,7 +68,7 @@ public class MagicPlayerListener extends PlayerListener {
     @SuppressWarnings("static-access")
 	@Override
     //When the player inputs the mc command, it either puts the carpet in or removes it, depending on the previous state
-    public void onPlayerCommand(PlayerChatEvent event) {
+    public void onPlayerCommandPreprocess(PlayerChatEvent event) {
     	int c = 5;
         String[] split = event.getMessage().split(" ");
         Player player = event.getPlayer();

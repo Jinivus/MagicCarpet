@@ -41,12 +41,7 @@ public class MagicCarpet extends JavaPlugin {
 	private static Logger log = Logger.getLogger("Minecraft");
 	private String name = "MagicCarpet";
 
-	public MagicCarpet(PluginLoader pluginLoader, Server instance,
-			PluginDescriptionFile desc, File folder, File plugin,
-			ClassLoader cLoader) {
-		super(pluginLoader, instance, desc, folder, plugin, cLoader);
-		
-		registerEvents();
+	public MagicCarpet() {
 	}
 
     public void onEnable() {
@@ -54,6 +49,7 @@ public class MagicCarpet extends JavaPlugin {
         
 
         // EXAMPLE: Custom code, here we just output some info so we can check all is well
+    	registerEvents();
     	setupPermissions();
         PluginDescriptionFile pdfFile = this.getDescription();
         if(Permissions != null)
@@ -80,7 +76,7 @@ public class MagicCarpet extends JavaPlugin {
     private void registerEvents(){
     	getServer().getPluginManager().registerEvent(Event.Type.PLAYER_JOIN, playerListener, Priority.Normal, this);
         getServer().getPluginManager().registerEvent(Event.Type.PLAYER_QUIT, playerListener, Priority.Normal, this);
-        getServer().getPluginManager().registerEvent(Event.Type.PLAYER_COMMAND, playerListener, Priority.Normal, this);
+        getServer().getPluginManager().registerEvent(Event.Type.PLAYER_COMMAND_PREPROCESS, playerListener, Priority.Normal, this);
         getServer().getPluginManager().registerEvent(Event.Type.PLAYER_MOVE, playerListener, Priority.Normal, this);
         getServer().getPluginManager().registerEvent(Event.Type.PLAYER_TELEPORT, playerListener, Priority.Normal, this);
     }
